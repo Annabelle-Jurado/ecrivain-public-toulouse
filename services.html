@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mes services – Écrivain public Toulouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert:    #4a6b5d;
+      --vert-fonce: #3a5549;
+      --beige:   #f5f3ef;
+      --gris:    #888;
+      --texte:   #2c2c2c;
+      --blanc:   #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Jost', sans-serif; background: var(--beige); color: var(--texte); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 28px; background: var(--beige); border-bottom: 1px solid #e0ddd7;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--texte); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gris); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--vert); }
+    .burger { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--beige);
+      z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.5rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--texte); text-decoration: none;
+    }
+    .close-btn {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; font-size: 2rem; cursor: pointer;
+    }
+
+    .page-hero {
+      background: var(--vert-fonce); padding: 64px 28px; text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3rem); color: var(--blanc); font-weight: 600;
+    }
+
+    .services-wrap { max-width: 780px; margin: 0 auto; padding: 64px 28px; }
+
+    .tarif-group { margin-bottom: 52px; }
+    .tarif-group h2 {
+      font-family: 'Jost', sans-serif;
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blanc); background: var(--vert);
+      padding: 14px 20px; margin-bottom: 0;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    tr { border-bottom: 1px solid #e0ddd7; }
+    tr:last-child { border-bottom: none; }
+    td {
+      padding: 16px 20px; font-size: .95rem; color: #555; background: var(--blanc);
+    }
+    tr:nth-child(even) td { background: #f9f8f5; }
+    td:last-child {
+      text-align: right; white-space: nowrap;
+      color: var(--vert-fonce); font-weight: 500;
+    }
+
+    .devis-cta {
+      background: var(--vert-fonce); padding: 64px 28px; text-align: center;
+    }
+    .devis-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--blanc); margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block; padding: 14px 40px;
+      font-family: 'Jost', sans-serif; font-size: .75rem; letter-spacing: .15em;
+      text-transform: uppercase; text-decoration: none;
+      border: 1.5px solid var(--blanc); color: var(--blanc);
+      background: transparent; cursor: pointer; transition: background .2s, color .2s;
+    }
+    .btn:hover { background: var(--blanc); color: var(--texte); }
+
+    footer {
+      background: var(--vert-fonce); color: rgba(255,255,255,.7);
+      text-align: center; padding: 24px 20px;
+      font-size: .8rem; letter-spacing: .05em;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .burger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">Écrivain public Toulouse</a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Accueil</a></li>
+      <li><a href="services.html" class="active">Mes services</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+    </ul>
+    <button class="burger" onclick="openMenu()">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" onclick="closeMenu()">✕</button>
+    <a href="/index.html" onclick="closeMenu()">Accueil</a>
+    <a href="services.html" onclick="closeMenu()">Mes services</a>
+    <a href="apropos.html" onclick="closeMenu()">À propos</a>
+  </div>
+
+  <div class="page-hero">
+    <h1>Services</h1>
+  </div>
+
+  <div class="services-wrap">
+
+    <div class="tarif-group fade-in">
+      <h2>Prestations administratives</h2>
+      <table>
+        <tr><td>Courrier administratif</td><td>30 €</td></tr>
+        <tr><td>Formulaire</td><td>50 €</td></tr>
+        <tr><td>Démarche administrative en ligne</td><td>30 €</td></tr>
+        <tr><td>Dossier administratif complet (MDPH, retraite, logement…)</td><td>80 €</td></tr>
+      </table>
+    </div>
+
+    <div class="tarif-group fade-in">
+      <h2>Prestations professionnelles</h2>
+      <table>
+        <tr><td>CV</td><td>35 €</td></tr>
+        <tr><td>Lettre de motivation</td><td>35 €</td></tr>
+        <tr><td>Préparation à l'entretien</td><td>40 €</td></tr>
+        <tr><td>Dossier VAE – relecture et correction</td><td>120 €</td></tr>
+        <tr><td>Dossier VAE – rédaction complète</td><td>350 €</td></tr>
+      </table>
+    </div>
+
+    <div class="tarif-group fade-in">
+      <h2>Relecture et correction</h2>
+      <table>
+        <tr><td>Relecture et correction simple</td><td>5 € / page</td></tr>
+        <tr><td>Relecture, correction et réécriture</td><td>15 € / page</td></tr>
+      </table>
+    </div>
+
+    <div class="tarif-group fade-in">
+      <h2>Rédaction créative</h2>
+      <table>
+        <tr><td>Lettre personnelle</td><td>35 €</td></tr>
+        <tr><td>Récit de vie – entretien</td><td>60 € / heure</td></tr>
+        <tr><td>Récit de vie – rédaction personnalisée</td><td>Sur devis</td></tr>
+        <tr><td>Discours / vœux</td><td>Sur devis</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="devis-cta">
+    <h2>Demandez un devis gratuit</h2>
+    <a href="mailto:jurado-annabelle@outlook.fr" class="btn">Me contacter</a>
+  </div>
+
+  <footer>
+    © 2026 Annabelle Jurado – Écrivain public Toulouse
+  </footer>
+
+  <script>
+    function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

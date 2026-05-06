@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Écrivain public Toulouse – Annabelle Jurado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert:    #4a6b5d;
+      --vert-fonce: #3a5549;
+      --beige:   #f5f3ef;
+      --gris:    #888;
+      --texte:   #2c2c2c;
+      --blanc:   #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--beige);
+      color: var(--texte);
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 28px;
+      background: var(--beige);
+      border-bottom: 1px solid #e0ddd7;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--texte); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gris); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--vert); }
+    .burger { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--beige);
+      z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.5rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--texte); text-decoration: none;
+    }
+    .close-btn {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; font-size: 2rem; cursor: pointer;
+    }
+
+    .hero {
+      position: relative; min-height: 92vh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1400&q=80') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; padding: 0 24px; max-width: 680px; }
+    .hero-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      font-weight: 600; color: var(--blanc); line-height: 1.15; margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: clamp(.9rem, 2.5vw, 1.05rem); color: rgba(255,255,255,.88);
+      line-height: 1.75; margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .btn {
+      display: inline-block; padding: 14px 36px;
+      font-family: 'Jost', sans-serif; font-size: .75rem; letter-spacing: .15em;
+      text-transform: uppercase; text-decoration: none;
+      border: 1.5px solid var(--blanc); color: var(--blanc);
+      background: transparent; cursor: pointer; transition: background .2s, color .2s;
+      min-width: 240px; text-align: center;
+    }
+    .btn:hover { background: var(--blanc); color: var(--texte); }
+
+    .section { padding: 72px 28px; max-width: 760px; margin: 0 auto; text-align: center; }
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 5vw, 2.5rem); font-weight: 600;
+      color: var(--vert-fonce); margin-bottom: 24px;
+    }
+    .section p { font-size: 1rem; line-height: 1.8; color: #555; }
+
+    .domaines { background: var(--blanc); padding: 72px 28px; }
+    .domaines-inner { max-width: 860px; margin: 0 auto; }
+    .domaines h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 5vw, 2.5rem); font-weight: 600;
+      color: var(--vert-fonce); text-align: center; margin-bottom: 52px;
+    }
+    .domaines-grid { display: grid; gap: 48px; }
+    .domaine-item { display: grid; gap: 0; }
+    .domaine-img {
+      width: 100%; height: 240px; object-fit: cover; display: block;
+    }
+    .domaine-body { padding: 24px 0 0; }
+    .domaine-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600;
+      color: var(--texte); margin-bottom: 10px;
+    }
+    .domaine-body p { font-size: .95rem; line-height: 1.75; color: #666; }
+
+    .contact-strip {
+      background: var(--beige); padding: 64px 28px;
+      text-align: center; border-top: 1px solid #e0ddd7;
+    }
+    .contact-strip h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; color: var(--vert-fonce); margin-bottom: 12px;
+    }
+    .contact-strip p { color: #666; margin-bottom: 8px; }
+    .contact-strip a { color: var(--vert); text-decoration: none; }
+
+    footer {
+      background: var(--vert-fonce); color: rgba(255,255,255,.7);
+      text-align: center; padding: 24px 20px;
+      font-size: .8rem; letter-spacing: .05em;
+    }
+
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (min-width: 640px) {
+      .hero-btns { flex-direction: row; justify-content: center; }
+      .domaines-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .burger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/index.html" class="nav-logo">Écrivain public Toulouse</a>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Accueil</a></li>
+      <li><a href="services.html">Mes services</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+    </ul>
+    <button class="burger" onclick="openMenu()">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" onclick="closeMenu()">✕</button>
+    <a href="/index.html" onclick="closeMenu()">Accueil</a>
+    <a href="services.html" onclick="closeMenu()">Mes services</a>
+    <a href="apropos.html" onclick="closeMenu()">À propos</a>
+  </div>
+
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Vos mots, mon expertise</h1>
+      <p>Je vous accompagne dans toutes vos démarches écrites : lettres, courriers officiels, dossiers administratifs, récits personnels, CV, VAE… Un service humain, confidentiel et professionnel à Toulouse.</p>
+      <div class="hero-btns">
+        <a href="services.html" class="btn">Voir les tarifs</a>
+        <a href="mailto:jurado-annabelle@outlook.fr" class="btn">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="section fade-in">
+    <h2>Pourquoi faire appel à un écrivain public ?</h2>
+    <p>Rédiger une lettre officielle, répondre à une administration ou mettre en valeur son parcours peut sembler intimidant. Je suis là pour vous aider en mettant mes compétences rédactionnelles à votre service. Que vous soyez à la recherche d'un emploi, en difficulté avec une démarche administrative, ou si vous souhaitez simplement faire raconter votre histoire par quelqu'un de confiance, je vous accompagne de A à Z.</p>
+  </div>
+
+  <section class="domaines">
+    <div class="domaines-inner">
+      <h2>Mes domaines d'intervention</h2>
+      <div class="domaines-grid">
+        <div class="domaine-item fade-in">
+          <img class="domaine-img" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80" alt="Rédaction personnelle">
+          <div class="domaine-body">
+            <h3>Rédaction personnelle</h3>
+            <p>Lettres personnelles, vœux, courriers complexes ou aide à la rédaction de récits de vie. Je vous aide à exprimer vos pensées avec clarté et émotion.</p>
+          </div>
+        </div>
+        <div class="domaine-item fade-in">
+          <img class="domaine-img" src="https://images.unsplash.com/photo-1568667256549-094345857637?w=800&q=80" alt="Aide administrative">
+          <div class="domaine-body">
+            <h3>Aide administrative</h3>
+            <p>Rédaction de courriers, formulaires, dossiers administratifs complets. Simplifiez vos démarches avec mon assistance experte.</p>
+          </div>
+        </div>
+        <div class="domaine-item fade-in">
+          <img class="domaine-img" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Correction et réécriture">
+          <div class="domaine-body">
+            <h3>Correction et réécriture</h3>
+            <p>Relecture attentive, correction grammaticale, orthographique et stylistique de tous vos écrits. Perfectionnez vos textes avant publication ou envoi.</p>
+          </div>
+        </div>
+        <div class="domaine-item fade-in">
+          <img class="domaine-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="Accompagnement professionnel">
+          <div class="domaine-body">
+            <h3>Accompagnement professionnel</h3>
+            <p>CV, lettres de motivation, préparation à l'entretien d'embauche, dossiers VAE, je vous guide à chaque étape.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact-strip fade-in">
+    <h2>Contact</h2>
+    <p><strong>Annabelle Jurado</strong></p>
+    <p>Toulouse, France</p>
+    <p><a href="mailto:jurado-annabelle@outlook.fr">jurado-annabelle@outlook.fr</a></p>
+  </div>
+
+  <footer>
+    © 2026 Annabelle Jurado – Écrivain public Toulouse
+  </footer>
+
+  <script>
+    function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
