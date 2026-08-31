@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions légales – Écrivain public Toulouse – Annabelle Jurado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert:    #4a6b5d;
+      --vert-fonce: #3a5549;
+      --beige:   #f5f3ef;
+      --gris:    #888;
+      --texte:   #2c2c2c;
+      --blanc:   #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--beige);
+      color: var(--texte);
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 28px;
+      background: var(--beige);
+      border-bottom: 1px solid #e0ddd7;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--texte); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gris); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--vert); }
+    .burger { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--beige);
+      z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.5rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--texte); text-decoration: none;
+    }
+    .close-btn {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; font-size: 2rem; cursor: pointer;
+    }
+
+    .legal-header {
+      padding: 64px 28px 32px;
+      text-align: center;
+    }
+    .legal-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 600;
+      color: var(--vert-fonce);
+    }
+
+    .legal-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 28px 80px;
+    }
+    .legal-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--vert-fonce);
+      margin: 40px 0 14px;
+    }
+    .legal-content h2:first-child { margin-top: 0; }
+    .legal-content p {
+      font-size: .95rem;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .legal-content a {
+      color: var(--vert);
+      text-decoration: none;
+    }
+    .legal-content a:hover { text-decoration: underline; }
+
+    footer {
+      background: var(--vert-fonce); color: rgba(255,255,255,.7);
+      text-align: center; padding: 24px 20px;
+      font-size: .8rem; letter-spacing: .05em;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .burger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Écrivain public Toulouse</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="services.html">Mes services</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+    </ul>
+    <button class="burger" onclick="openMenu()">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" onclick="closeMenu()">✕</button>
+    <a href="index.html" onclick="closeMenu()">Accueil</a>
+    <a href="services.html" onclick="closeMenu()">Mes services</a>
+    <a href="apropos.html" onclick="closeMenu()">À propos</a>
+  </div>
+
+  <header class="legal-header">
+    <h1>Mentions légales</h1>
+  </header>
+
+  <div class="legal-content">
+    <h2>Éditeur du site</h2>
+    <p>Annabelle Jurado</p>
+    <p>Entrepreneur individuel (micro-entreprise) – Écrivain public</p>
+    <p>41bis rue Auguste Renoir, 31200 Toulouse, France</p>
+    <p>SIRET : 10397331900017</p>
+    <p>Activité libérale non réglementée, dispensée d'immatriculation au RCS et au RM</p>
+    <p>TVA non applicable, art. 293 B du CGI</p>
+    <p>Email : <a href="mailto:jurado-annabelle@outlook.fr">jurado-annabelle@outlook.fr</a></p>
+
+    <h2>Directrice de la publication</h2>
+    <p>Annabelle Jurado</p>
+
+    <h2>Hébergement</h2>
+    <p>GitHub, Inc.</p>
+    <p>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>L'ensemble des contenus présents sur ce site (textes, images, logo) est la propriété d'Annabelle Jurado, sauf mention contraire, et ne peut être reproduit sans autorisation préalable.</p>
+
+    <h2>Contact</h2>
+    <p>Pour toute question relative au site ou à son contenu, vous pouvez me contacter à l'adresse : <a href="mailto:jurado-annabelle@outlook.fr">jurado-annabelle@outlook.fr</a></p>
+  </div>
+
+  <footer>
+    © 2026 Annabelle Jurado – Écrivain public Toulouse
+  </footer>
+
+  <script>
+    function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  </script>
+</body>
+</html>
